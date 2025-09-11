@@ -1,0 +1,465 @@
+:root {
+    --primary-color: #007bff; /* A nice blue */
+    --secondary-color: #0056b3; /* Darker blue for hover */
+    --bg-dark: #1a1a1a;
+    --bg-medium: #2a2a2a;
+    --bg-light: #333;
+    --text-light: #f0f0f0;
+    --text-medium: #ccc;
+    --shadow-light: rgba(0, 0, 0, 0.2);
+    --shadow-medium: rgba(0, 0, 0, 0.4);
+    --shadow-heavy: rgba(0, 0, 0, 0.6);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+/* --- Global Elements --- */
+h1, h2, h3 {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+section {
+    padding: 80px 20px; /* Increased padding for more breathing room */
+    max-width: 960px; /* Wider content area */
+    margin: auto;
+    background-color: var(--bg-medium);
+    border-radius: 10px; /* Slightly more rounded corners */
+    box-shadow: 0 8px 20px var(--shadow-medium); /* Enhanced shadow */
+    margin-bottom: 40px; /* Space between sections */
+    transition: transform 0.3s ease-in-out; /* For potential future animations */
+}
+
+section:last-of-type {
+    margin-bottom: 0;
+}
+
+/* --- Buttons --- */
+.button {
+    display: inline-block;
+    padding: 14px 32px; /* Slightly larger buttons */
+    background-color: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px; /* More rounded */
+    font-weight: bold;
+    font-size: 1.05em;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4); /* Stronger button shadow */
+    letter-spacing: 0.5px;
+}
+
+.button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6); /* More intense shadow on hover */
+}
+
+/* --- Navigation Bar --- */
+nav {
+    position: fixed;
+    width: 100%;
+    background-color: rgba(13, 13, 13, 0.95); /* Slightly transparent background */
+    padding: 18px 0; /* More padding */
+    text-align: center;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px var(--shadow-heavy); /* Stronger shadow */
+    backdrop-filter: blur(5px); /* Frosted glass effect */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav li {
+    margin: 0 18px; /* More spacing */
+}
+
+nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 600; /* Slightly bolder */
+    font-size: 1.05em;
+    transition: color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    position: relative; /* For underline effect */
+}
+
+nav a::after { /* Underline effect on hover */
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease-out;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* --- Hero Section (Top Banner) --- */
+#hero.hero-section {
+    /* Remember to replace 'your_background_image.jpg' with your actual image path */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('C:\Users\User\OneDrive\Desktop\intern_projects\myphoto.jpg') no-repeat center center/cover;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    margin-top: -80px; /* Adjust to account for nav bar height */
+    position: relative;
+    overflow: hidden; /* For background effects */
+}
+
+.hero-content {
+    padding-top: 80px; /* Offset for the fixed navigation bar */
+    max-width: 900px;
+    position: relative;
+    z-index: 2; /* Ensure content is above background effects */
+}
+
+.hero-content h1 {
+    font-size: 4.5em; /* Even larger name */
+    margin: 0 0 10px 0;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px rgba(0, 123, 255, 0.5); /* Subtle glowing effect */
+    animation: fadeInDown 1s ease-out forwards; /* Name animation */
+}
+
+.hero-content p {
+    font-size: 1.4em;
+    margin: 15px 0 40px 0;
+    color: var(--text-medium);
+    animation: fadeInUp 1s ease-out 0.5s forwards; /* Paragraph animation */
+    opacity: 0; /* Start hidden for animation */
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* --- About Me Section --- */
+#about.about-me-section {
+    background-color: var(--bg-light); /* Lighter for contrast */
+    padding: 100px 20px; /* More padding */
+    box-shadow: 0 10px 25px var(--shadow-heavy);
+    margin-top: -120px; /* Pull up more into hero section */
+    position: relative;
+    z-index: 10;
+    border-bottom-left-radius: 0; /* Sharper edges at bottom to blend */
+    border-bottom-right-radius: 0;
+}
+
+.about-me-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Vertically center image and text */
+    gap: 60px; /* Increased space */
+    max-width: 1000px; /* Even wider container */
+    padding: 30px;
+}
+
+.about-me-container img {
+    width: 300px; /* Larger image */
+    height: 400px; /* Taller aspect ratio */
+    border-radius: 10px;
+    object-fit: cover;
+    border: 5px solid var(--primary-color); /* Thicker, prominent border */
+    flex-shrink: 0;
+    box-shadow: 0 10px 25px var(--shadow-medium);
+    transition: transform 0.3s ease;
+}
+
+.about-me-container img:hover {
+    transform: scale(1.03); /* Subtle zoom on hover */
+}
+
+.about-me-text {
+    flex: 1;
+    text-align: left;
+}
+
+.about-me-text h2 {
+    font-size: 2.8em; /* Larger title */
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: left;
+    border-bottom: 3px solid var(--primary-color); /* Thicker underline */
+    padding-bottom: 12px;
+    display: inline-block;
+    letter-spacing: 1.5px;
+}
+
+.about-me-text p {
+    font-size: 1.15em;
+    color: var(--text-medium);
+    margin-bottom: 30px;
+}
+
+/* --- Section Titles General --- */
+section h2 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 15px;
+    display: block; /* Make it a block element for full width underline */
+    width: fit-content; /* Fit width to content */
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeIn 1s ease-out forwards; /* Title fade-in animation */
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* --- Skills Section --- */
+#skills ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* More spacing */
+    justify-content: center;
+}
+
+#skills li {
+    background-color: var(--bg-light);
+    padding: 14px 25px; /* Larger tags */
+    border-radius: 30px; /* More rounded */
+    font-weight: 600;
+    color: var(--text-light);
+    box-shadow: 0 4px 10px var(--shadow-light);
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+}
+
+#skills li:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* --- Projects Section --- */
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Larger project cards */
+    gap: 40px; /* More gap */
+}
+
+.projects-container div {
+    background-color: var(--bg-light);
+    padding: 30px; /* More padding */
+    border-radius: 12px; /* More rounded */
+    box-shadow: 0 8px 20px var(--shadow-medium);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projects-container div:hover {
+    transform: translateY(-8px); /* More pronounced lift */
+    box-shadow: 0 12px 25px var(--shadow-heavy);
+}
+
+.projects-container h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    font-size: 1.6em;
+    margin-bottom: 15px;
+}
+
+.projects-container p {
+    font-size: 1.05em;
+    color: var(--text-medium);
+}
+
+.projects-container img {
+    width: 100%;
+    height: 200px; /* Taller project images */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 20px;
+    border: 1px solid #444;
+    box-shadow: 0 4px 10px var(--shadow-light);
+}
+
+/* --- Contact Section --- */
+#contact ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+#contact li {
+    margin-bottom: 18px;
+    font-size: 1.2em;
+}
+
+#contact li a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#contact li a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 40px;
+    background-color: var(--bg-dark);
+    margin-top: 60px;
+    color: var(--text-medium);
+    font-size: 1em;
+    box-shadow: 0 -4px 10px var(--shadow-heavy);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .about-me-container {
+        flex-direction: column; /* Stack vertically */
+        text-align: center;
+    }
+    .about-me-container img {
+        margin-bottom: 30px;
+    }
+    .about-me-text h2 {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    nav ul {
+        flex-wrap: wrap;
+    }
+    nav li {
+        margin: 8px 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 3.5em;
+    }
+    .hero-content p {
+        font-size: 1.2em;
+    }
+    nav {
+        padding: 12px 0;
+    }
+    nav a {
+        font-size: 0.9em;
+    }
+    section {
+        padding: 60px 15px;
+    }
+    .about-me-container img {
+        width: 250px;
+        height: 320px;
+    }
+    .about-me-text h2 {
+        font-size: 2.2em;
+    }
+    .projects-container {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+    .button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    section {
+        padding: 40px 10px;
+        margin-bottom: 20px;
+    }
+    h2 {
+        font-size: 2em;
+    }
+    .about-me-container img {
+        width: 180px;
+        height: 240px;
+    }
+    nav li {
+        margin: 5px 8px;
+    }
+    nav a {
+        font-size: 0.8em;
+    }
+}
+
+/* --- Optional: Scroll Reveal Effect (Requires a small JavaScript snippet) --- */
+/* Add this class to elements you want to animate on scroll, e.g., <section class="scroll-reveal"> */
+/* .scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+} */
+
+/* Example JavaScript (add this to an index.js file and link in HTML body)
+document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            } else {
+                entry.target.classList.remove('active'); // Optional: remove when out of view
+            }
+        });
+    }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+    document.querySelectorAll('.scroll-reveal').forEach(element => {
+        observer.observe(element);
+    });
+});
+*/
